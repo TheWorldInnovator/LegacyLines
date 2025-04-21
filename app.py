@@ -3,14 +3,12 @@ import streamlit as st
 from openai import OpenAI
 from dotenv import load_dotenv
 
-# Load API key
 load_dotenv()
 client = OpenAI(
     base_url="https://models.inference.ai.azure.com",
     api_key=os.environ["GITHUB_TOKEN"],
 )
 
-# Page config
 st.set_page_config(page_title="LegacyLines", layout="centered")
 
 st.markdown("""
@@ -121,11 +119,9 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-
 st.title("🌍 Explore Famous Oral Histories")
 st.markdown("Select a country to discover one of its most well-known oral history stories.")
 
-# Country list
 countries = ["Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda",
     "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan", "Bahamas",
     "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin",
@@ -158,12 +154,10 @@ countries = ["Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua 
     "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", "Tuvalu", "Uganda",
     "Ukraine", "United Arab Emirates", "United Kingdom", "United States", "Uruguay",
     "Uzbekistan", "Vanuatu", "Vatican City", "Venezuela", "Vietnam", "Yemen",
-    "Zambia", "Zimbabwe"]  # use your full list here
+    "Zambia", "Zimbabwe"] 
 
-# Dropdown
 country = st.selectbox("🌐 Choose a country", countries)
 
-# Show history on button press
 if st.button("🔍 Show me an oral history"):
     st.subheader(f"Famous Oral History from {country}")
     with st.spinner("Fetching story..."):
